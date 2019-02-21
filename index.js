@@ -157,9 +157,9 @@ server.post('/api/students', async (req, res) => {
 // **************** UPDATE STUDENT **************//
 server.put('/api/students/:id', async (req, res) => {
   if (!req.body.name || !req.body.cohort_id) {
-    res
+    return res
       .status(412)
-      .json({ error: 'Please Update both name and cohort_id fields.' });
+      .json({ error: `Please Update both 'name' and 'cohort_id' fields.` });
   }
   try {
     const count = await db('students')
